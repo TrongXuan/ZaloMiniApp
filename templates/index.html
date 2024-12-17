@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - EstateAgency Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="static/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Updated: Aug 09 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    /* Thêm padding vào các phần tử chứa thông tin */
+    .property-card {
+        padding: 15px;  /* Thêm khoảng cách giữa nội dung và viền */
+        border: 1px solid #ddd;  /* Thêm viền mờ cho ô */
+        border-radius: 8px;  /* Làm tròn các góc */
+        background-color: #fff;  /* Màu nền trắng cho các ô */
+    }
+
+    /* Thêm padding cho các phần tử bên trong thẻ card-body */
+    .property-card .card-body {
+        padding: 10px;  /* Thêm khoảng cách vào bên trong */
+    }
+
+    /* Đảm bảo khoảng cách cho văn bản trong thẻ <p> */
+    .property-card p {
+        margin-bottom: 10px;  /* Thêm khoảng cách dưới mỗi đoạn văn bản */
+    }
+    /* Viền bên ngoài của mỗi ô */
+    .property-card {
+      border: 1px solid #ddd; /* Viền màu xám sáng */
+      border-radius: 8px; /* Góc bo tròn nhẹ */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bóng mờ */
+      background-color: white;
+    }
+    .property-image {
+      width: 100%;
+    }
+
+    .property-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="static/img/logo.png" alt=""> -->
+        <h1 class="sitename">XT<span>Land</span></h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+          <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+          <li><a href="{{ url_for('services') }}">Dịch vụ</a></li>
+          <li><a href="{{ url_for('properties') }}">Bất động sản</a></li>
+          <li><a href="{{ url_for('agents') }}">Bài Viết</a></li>
+          <li><a href="{{ url_for('contact') }}">Liên hệ</a></li>
+          <li><a href="{{ url_for('login') }}">Đăng Nhập</a></li>
+          <li><a href="{{ url_for('DuDoan') }}">Dự Đoán</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    
+        {% for property in properties %}
+          <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <img src="{{ property['Image URL'] }}" alt="Hình ảnh bất động sản">
+            <div class="carousel-container">
+              <div>
+                <p>Vị trí: {{ property['Address'] }}</p>
+                  <h2>{{ property['Title'] }}</h2>
+                <a href="{{ url_for('property_detail', id=property['id']) }}" class="btn-get-started">SALE | {{ (property['Price']) }} VND</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    
+        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+        <ol class="carousel-indicators"></ol>
+    
+      </div>
+    </section>
+    
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Bất Động Sản Của Chúng Tôi</h2>
+        <p>XT Land mang đến các giải pháp bất động sản toàn diện, bao gồm tư vấn, mua bán và đầu tư, với cam kết uy tín và hiệu quả tối ưu cho khách hàng.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          {% for property in properties %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="property-card"><a href="{{ url_for('property_detail', id=property['id']) }}">
+                <div class="property-image">
+                  <!-- Kiểm tra nếu có URL hình ảnh -->
+                  {% if property['Image URL'] %}
+                    <img src="{{ property['Image URL'] }}" alt="Property Image">
+                  {% else %}
+                    <img src="default-image.jpg" alt="Default Image"> <!-- Hình ảnh mặc định nếu không có URL -->
+                  {% endif %}
+                </div>
+              </a>
+                <div class="card-body">
+                  <h3 style="font-family: Arial, Helvetica, sans-serif;">
+                    <a href="{{ url_for('property_detail', id=property['id']) }}">{{ property['Title'] }}</a>
+                  </h3>
+                  <p><strong>Địa chỉ:</strong> {{ property['Address'] }}</p>
+                <p><strong>Giá:</strong> {{ property['Price'] }} VND</p>
+                <p><strong>Diện tích:</strong> {{ property['Land_Area'] }} m²</p>
+                <p><strong>Phòng Ngủ:</strong> {{ property['Bedrooms'] }} Phòng</p>
+                <p><strong>Phòng Tắm:</strong> {{ property['Bathrooms'] }} Phòng</p>
+                <p><strong>Pháp Lý:</strong> {{ property['Legal'] }}</p>
+                <p><strong>Mã BĐS:</strong> {{ property['Property_ID'] }}</p>
+                <p><strong>Ngày đăng:</strong> {{ property['Posted_Date'] }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Agents Section -->
+    <section id="agents" class="agents section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Đội ngũ của chúng tôi</h2>
+        <p>XT Land tự hào có đội ngũ chuyên gia tận tâm và giàu kinh nghiệm, sẵn sàng hỗ trợ khách hàng trong mọi giao dịch bất động sản.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <div class="pic"><img src="static/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Executive Officer</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <div class="pic"><img src="static/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Rent Manager</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <div class="pic"><img src="static/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>Sale manager<br></span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Agents Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Nhận xét khách hàng</h2>
+        <p>Chúng tôi luôn tự hào với những phản hồi tích cực từ khách hàng, khẳng định chất lượng dịch vụ và uy tín của XT Land trong lĩnh vực bất động sản.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 1
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  Dịch vụ của XT Land thật tuyệt vời, tôi rất hài lòng với những bất động sản mà công ty cung cấp. Sự chuyên nghiệp và uy tín của họ là điều tôi rất tin tưởng.
+                </p>
+                <div class="profile mt-auto">
+                  <img src="static/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <h3>Saul Goodman</h3>
+              <h4>Giám đốc điều hành &amp; Người sáng lập</h4>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  XT Land luôn mang đến những sản phẩm bất động sản chất lượng cao, đáp ứng đầy đủ nhu cầu và yêu cầu của tôi. Tôi hoàn toàn hài lòng với sự hỗ trợ tận tình của họ.
+                </p>
+                <div class="profile mt-auto">
+                  <img src="static/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Nhà thiết kế</h4>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  Chất lượng dịch vụ của XT Land luôn vượt trội. Tôi đã tìm thấy bất động sản lý tưởng của mình nhờ sự tư vấn và hỗ trợ chuyên nghiệp từ đội ngũ của họ.
+                </p>
+                <div class="profile mt-auto">
+                  <img src="static/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4>Chủ cửa hàng</h4>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  XT Land luôn cung cấp các giải pháp bất động sản phù hợp với nhu cầu của tôi. Dịch vụ tuyệt vời và đội ngũ nhân viên chuyên nghiệp.
+                </p>
+                <div class="profile mt-auto">
+                  <img src="static/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <h3>Matt Brandon</h3>
+                  <h4>Freelancer</h4>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  Tôi rất hài lòng với dịch vụ tư vấn của XT Land. Họ luôn lắng nghe và đưa ra những lời khuyên hữu ích về bất động sản.
+                </p>
+                <div class="profile mt-auto">
+                  <img src="static/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <h3>John Larson</h3>
+                  <h4>Doanh nhân</h4>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div class="address">
+            <h4>Address</h4>
+            <p>214/28 Lý Thường Kiệt</p>
+            <p>Di Linh, Lâm Đồng, Việt Nam</p>
+            <p></p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              <strong>Phone:</strong> <span>+84 366394982</span><br>
+              <strong>Email:</strong> <span>xuantrongle1804@gmail.com</span><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Mon-Sat:</strong> <span>11AM - 23PM</span><br>
+              <strong>Sunday</strong>: <span>Closed</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="static/js/main.js"></script>
+
+</body>
+
+</html>

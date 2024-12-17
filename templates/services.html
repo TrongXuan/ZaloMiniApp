@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Services - EstateAgency Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="static/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Updated: Aug 09 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="services-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="static/img/logo.png" alt=""> -->
+        <h1 class="sitename">XT<span>Land</span></h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+          <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+          <li><a href="{{ url_for('services') }}">Dịch vụ</a></li>
+          <li><a href="{{ url_for('properties') }}">Bất động sản</a></li>
+          <li><a href="{{ url_for('agents') }}">Bài Viết</a></li>
+          <li><a href="{{ url_for('contact') }}">Liên hệ</a></li>
+          <li><a href="{{ url_for('login') }}">Đăng Nhập</a></li>
+          <li><a href="{{ url_for('DuDoan') }}">Dự Đoán</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Dịch Vụ</h1>
+              <p class="mb-0">XT Land cung cấp dịch vụ tư vấn mua bán, cho thuê, và đầu tư bất động sản với chất lượng hàng đầu, đảm bảo mang lại giải pháp hiệu quả và tối ưu cho khách hàng.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="current">Services</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <a href={{ url_for('service_details') }} class="stretched-link">
+                <h3>Tiềm năng ẩn giấu</h3>
+              </a>
+              <p>Bất động sản có thể không phải lúc nào cũng dễ nhận thấy giá trị ngay lập tức, nhưng với sự kiên trì và hiểu biết, giá trị tiềm ẩn sẽ được khai thác. Mỗi giao dịch đều cần sự đánh giá cẩn thận và sẵn sàng vượt qua thách thức để đạt được thành công.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-broadcast"></i>
+              </div>
+              <a href={{ url_for('service_details') }} class="stretched-link">
+                <h3>Giá trị từ chiến lược thông minh</h3>
+              </a>
+              <p>Bất động sản không phải lúc nào cũng vận hành tự động; nó đòi hỏi chiến lược đúng đắn. Những điều dễ dàng đôi khi chỉ là bề nổi. Thành công thực sự đến từ việc nắm bắt cơ hội và kiểm soát rủi ro, bất chấp các khó khăn luôn tồn tại trong thị trường.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-easel"></i>
+              </div>
+              <a href={{ url_for('service_details') }} class="stretched-link">
+                <h3>Giá trị từ sự tuân thủ</h3>
+              </a>
+              <p>Trong lĩnh vực bất động sản, sự tuân thủ và minh bạch là yếu tố then chốt. Đôi khi cần phải nhẫn nại và kiên định để vượt qua những khó khăn ban đầu, nhưng thành quả đạt được sẽ lớn hơn nhiều so với những gì ta phải đánh đổi.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-bounding-box-circles"></i>
+              </div>
+              <a href={{ url_for('service_details') }} class="stretched-link">
+                <h3>Thời điểm và quyết tâm</h3>
+              </a>
+              <p>Không phải lúc nào thời điểm cũng lý tưởng, nhưng với sự kiên trì và quyết tâm, giá trị bất động sản sẽ được nâng cao. Đó là quá trình nỗ lực để tránh sai lầm và tìm kiếm các cơ hội phát triển, bất chấp mọi khó khăn của thị trường.</p>
+              <a href={{ url_for('service_details') }} class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-calendar4-week"></i>
+              </div>
+              <a href={{ url_for('service_details') }} class="stretched-link">
+                <h3>Tận dụng cơ hội và phát triển</h3>
+              </a>
+              <p>Trong kinh doanh bất động sản, sự kiên nhẫn và chịu đựng thường được đặt lên hàng đầu. Những điều lớn lao chỉ có thể đạt được khi chúng ta chấp nhận thách thức và làm việc chăm chỉ. Tâm trí sẵn sàng thay đổi sẽ giúp bạn phát triển và thành công trong lĩnh vực này.</p>
+              <a href={{ url_for('service_details') }} class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+              <a href={{ url_for('service_details') }} class="stretched-link">
+                <h3>Đối mặt và vượt qua thách thức</h3>
+              </a>
+              <p>Sự phiền phức và lo lắng là một phần không thể tránh khỏi của quá trình đầu tư bất động sản. Tuy nhiên, sự khó khăn không làm thay đổi bản chất của người thành công. Ngay cả khi đối mặt với sự chống đối, điều quan trọng là phải tiếp tục tiến lên và không ngừng phát triển.</p>
+              <a href={{ url_for('service_details') }} class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div class="address">
+            <h4>Address</h4>
+            <p>214/28 Lý Thường Kiệt</p>
+            <p>Di Linh, Lâm Đồng, Việt Nam</p>
+            <p></p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              <strong>Phone:</strong> <span>+84 366394982</span><br>
+              <strong>Email:</strong> <span>xuantrongle1804@gmail.com</span><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Mon-Sat:</strong> <span>11AM - 23PM</span><br>
+              <strong>Sunday</strong>: <span>Closed</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">EstateAgency</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="static/js/main.js"></script>
+
+</body>
+
+</html>

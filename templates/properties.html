@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Properties - EstateAgency Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="static/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Updated: Aug 09 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    .pagination {
+        margin-top: 20px; /* Điều chỉnh khoảng cách trên của phân trang */
+    }
+    .pagination .page-item {
+        margin: 0 5px; /* Khoảng cách ngang giữa các nút */
+    }
+    .pagination .page-item .page-link {
+        padding: 10px 15px; /* Kích thước nút phân trang */
+    }
+    .property-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #ddd; /* Viền khung màu xám nhạt */
+  border-radius: 8px; /* Bo góc nhẹ */
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng bóng */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-10px); /* Hiệu ứng di chuyển lên khi hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Tăng cường bóng khi hover */
+}
+
+.property-image {
+  width: 100%;
+}
+
+.property-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.card-body strong {
+  font-weight: 600;
+}
+
+.sale-rent {
+  font-size: 16px;
+  font-weight: bold;
+  color: #e53935; /* Màu đỏ cho giá */
+  margin-bottom: 10px;
+}
+
+/* Viền bên ngoài của mỗi ô */
+.property-card {
+  border: 1px solid #ddd; /* Viền màu xám sáng */
+  border-radius: 8px; /* Góc bo tròn nhẹ */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bóng mờ */
+  background-color: white;
+}
+
+
+</style>
+</head>
+
+<body class="properties-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="static/img/logo.png" alt=""> -->
+        <h1 class="sitename">XT<span>Land</span></h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+          <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+          <li><a href="{{ url_for('services') }}">Dịch vụ</a></li>
+          <li><a href="{{ url_for('properties') }}">Bất động sản</a></li>
+          <li><a href="{{ url_for('agents') }}">Bài Viết</a></li>
+          <li><a href="{{ url_for('contact') }}">Liên hệ</a></li>
+          <li><a href="{{ url_for('login') }}">Đăng Nhập</a></li>
+          <li><a href="{{ url_for('DuDoan') }}">Dự Đoán</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Danh sách Bất động sản</h1>
+              <p class="mb-0">Khám phá các bất động sản mới nhất với thông tin chi tiết và giá bán/thuê.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="current">Properties</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+      
+    <!-- Real Estate Section -->
+    <section id="real-estate" class="real-estate section">
+      <div class="container">
+        <div class="row gy-4">
+          {% for property in properties %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="property-card"><a href="{{ url_for('property_detail', id=property['id']) }}">
+                <div class="property-image">
+                  <!-- Kiểm tra nếu có URL hình ảnh -->
+                  {% if property['Image_URL'] %}
+                    <img src="{{ property['Image_URL'] }}" alt="Property Image">
+                  {% else %}
+                    <img src="default-image.jpg" alt="Default Image"> <!-- Hình ảnh mặc định nếu không có URL -->
+                  {% endif %}
+                </div>
+              </a>
+                <div class="card-body">
+                  <span class="sale-rent"><a href="index.html">Giá: {{ property['Price'] | int }} VND</a></span>
+                  <h3 style="font-family: Arial, Helvetica, sans-serif;">
+                    <a href="{{ url_for('property_detail', id=property['id']) }}">{{ property['Title'] }}</a>
+                  </h3>
+                  <p><strong>Địa chỉ:</strong> {{ property['Address'] }}</p>
+                  <p><strong>Diện tích:</strong> {{ property['Area_m2'] }} m²</p>
+                  <p><strong>Phòng ngủ:</strong> {{ property['Number_of_Bedrooms'] }}</p>
+                  <p><strong>Phòng tắm:</strong> {{ property['Number_of_Bathrooms'] }}</p>
+                  <p><strong>Ngày đăng:</strong> {{ property['Date_Posted'] }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    
+        <!-- Phân trang -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <!-- Nút 'Trước' -->
+            {% if page > 1 %}
+              <li class="page-item">
+                <a class="page-link" href="{{ url_for('properties', page=page - 1) }}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">&laquo;</span>
+              </li>
+            {% endif %}
+    
+            <!-- Hiển thị trang đầu tiên và dấu "..." nếu cần -->
+            {% if page > 3 %}
+              <li class="page-item"><a class="page-link" href="{{ url_for('properties', page=1) }}">1</a></li>
+              <li class="page-item disabled"><span class="page-link">...</span></li>
+            {% endif %}
+    
+            <!-- Hiển thị các trang xung quanh trang hiện tại -->
+            {% for p in range(page - 2, page + 3) %}
+              {% if p > 0 and p <= total_pages %}
+                {% if p == page %}
+                  <li class="page-item active"><span class="page-link">{{ p }}</span></li>
+                {% else %}
+                  <li class="page-item"><a class="page-link" href="{{ url_for('properties', page=p) }}">{{ p }}</a></li>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+    
+            <!-- Hiển thị trang cuối cùng và dấu "..." nếu cần -->
+            {% if page < total_pages - 2 %}
+              <li class="page-item disabled"><span class="page-link">...</span></li>
+              <li class="page-item"><a class="page-link" href="{{ url_for('properties', page=total_pages) }}">{{ total_pages }}</a></li>
+            {% endif %}
+    
+            <!-- Nút 'Tiếp theo' -->
+            {% if page < total_pages %}
+              <li class="page-item">
+                <a class="page-link" href="{{ url_for('properties', page=page + 1) }}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">&raquo;</span>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </section>
+    
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div class="address">
+            <h4>Address</h4>
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p></p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span><br>
+              <strong>Email:</strong> <span>info@example.com</span><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Mon-Sat:</strong> <span>11AM - 23PM</span><br>
+              <strong>Sunday</strong>: <span>Closed</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">EstateAgency</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="static/js/main.js"></script>
+
+</body>
+
+</html>
